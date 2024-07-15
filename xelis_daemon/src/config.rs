@@ -17,8 +17,8 @@ pub const NETWORK_ID_SIZE: usize = 16;
 pub const NETWORK_ID: [u8; NETWORK_ID_SIZE] = [0x73, 0x6c, 0x69, 0x78, 0x65, 0x5f, 0x78, 0x65, 0x6c, 0x69, 0x73, 0x5f, 0x62, 0x6c, 0x6f, 0x63];
 
 // bind addresses
-pub const DEFAULT_P2P_BIND_ADDRESS: &str = "0.0.0.0:2125";
-pub const DEFAULT_RPC_BIND_ADDRESS: &str = "0.0.0.0:8080";
+pub const DEFAULT_P2P_BIND_ADDRESS: &str = "0.0.0.0:6665";
+pub const DEFAULT_RPC_BIND_ADDRESS: &str = "0.0.0.0:6666";
 
 // Default cache size for storage DB
 pub const DEFAULT_CACHE_SIZE: usize = 1024;
@@ -97,7 +97,7 @@ pub const TRANSACTION_FEE_BURN_PERCENT: u64 = 30;
 
 // Developer address for paying dev fees until Smart Contracts integration
 // (testnet/mainnet format is converted lazily later)
-pub const DEV_ADDRESS: &str = "xel:vs3mfyywt0fjys0rgslue7mm4wr23xdgejsjk0ld7f2kxng4d4nqqnkdufz";
+pub const DEV_ADDRESS: &str = "skf:ccdppcfsxa49zxdya7m6uu3mhvj3568u0l6492uqklqvqqlwu53qqrfxcwp";
 
 // Chain sync config
 // minimum X seconds between each chain sync request per peer
@@ -205,39 +205,10 @@ const TESTNET_HARD_FORKS: [HardFork; 2] = [
     }
 ];
 
-// Mainnet seed nodes
-const MAINNET_SEED_NODES: [&str; 7] = [
-    // France
-    "51.210.117.23:2125",
-    // US
-    "198.71.55.87:2125",
-    // Germany
-    "162.19.249.100:2125",
-    // Singapore
-    "139.99.89.27:2125",
-    // Poland
-    "51.68.142.141:2125",
-    // Great Britain
-    "51.195.220.137:2125",
-    // "Canada"
-    "66.70.179.137:2125"
-];
-
-// Testnet seed nodes
-const TESTNET_SEED_NODES: [&str; 1] = [
-    // US
-    "74.208.251.149:2125",
-];
-
 // Genesis block to have the same starting point for every nodes
 // Genesis block in hexadecimal format
-const MAINNET_GENESIS_BLOCK: &str = "0000000000000000000000018efc057580000000000000000000000000000000000000000000000000000000000000000000000000000000000000006423b4908e5bd32241e3443fccfb7bab86a899a8cca12b3fedf255634d156d66";
-const TESTNET_GENESIS_BLOCK: &str = "0000000000000000000000018f116b47cf000000000000000000000000000000000000000000000000000000000000000000000000000000000000006423b4908e5bd32241e3443fccfb7bab86a899a8cca12b3fedf255634d156d66";
-
-// Genesis block hash for both networks
-// It must be the same as the hash of the genesis block
-const MAINNET_GENESIS_BLOCK_HASH: Hash = Hash::new([175, 118, 37, 203, 175, 200, 25, 148, 9, 202, 29, 120, 93, 128, 36, 209, 146, 193, 217, 36, 61, 51, 24, 194, 114, 113, 121, 208, 237, 163, 27, 55]);
-const TESTNET_GENESIS_BLOCK_HASH: Hash = Hash::new([171, 50, 219, 186, 28, 164, 189, 225, 197, 167, 187, 143, 213, 59, 217, 238, 51, 242, 133, 181, 188, 235, 151, 50, 110, 33, 185, 188, 100, 146, 23, 132]);
+const MAINNET_GENESIS_BLOCK: &str = "0000000000000000000000018fe5dbb2df00000000000000000000000000000000000000000000000000000000000000000000000000000000000000c61a10e130376a5119a4efb7ae723bbb251a68fc7ff552ab80b7c0c003eee522";
+const TESTNET_GENESIS_BLOCK: &str = "0000000000000000000000018fe5ab69b20000000000000000000000000000000000000000000000000000000000000000000000000000000000000098d01dd3ee183f8812f1a41f7f0f303e1e4bd9341ed0c57b4c30eadf4f6f027b";
 
 // Genesis block getter
 // This is necessary to prevent having the same Genesis Block for differents network
@@ -255,6 +226,11 @@ lazy_static! {
     pub static ref DEV_PUBLIC_KEY: PublicKey = Address::from_string(&DEV_ADDRESS.to_owned()).unwrap().to_public_key();
 }
 
+// Genesis block hash for both networks
+// It must be the same as the hash of the genesis block
+const MAINNET_GENESIS_BLOCK_HASH: Hash = Hash::new([91, 131, 11, 129, 199, 122, 214, 63, 164, 83, 80, 96, 57, 144, 227, 53, 102, 8, 249, 113, 218, 125, 89, 139, 129, 198, 151, 113, 44, 1, 176, 210]);
+const TESTNET_GENESIS_BLOCK_HASH: Hash = Hash::new([154, 133, 99, 78, 69, 90, 29, 226, 141, 41, 106, 107, 91, 77, 43, 46, 139, 133, 203, 32, 189, 172, 151, 222, 128, 5, 209, 32, 73, 146, 227, 98]);
+
 // Genesis block hash based on network selected
 pub fn get_genesis_block_hash(network: &Network) -> &'static Hash {
     match network {
@@ -263,6 +239,26 @@ pub fn get_genesis_block_hash(network: &Network) -> &'static Hash {
         Network::Dev => panic!("Dev network has no fix genesis block hash"),
     }
 }
+
+// Mainnet seed nodes
+const MAINNET_SEED_NODES: [&str; 4] = [
+
+    //Main Skoof
+    "5.35.80.233:6665",
+    //Russian Skoof
+    "45.84.224.245:6665",
+    //Kazakh Skoof
+    "91.218.140.84:6665",
+    //Latvian Skoof
+    "31.128.33.104:6665",
+
+];
+
+// Testnet seed nodes
+const TESTNET_SEED_NODES: [&str; 0] = [
+
+
+];
 
 // Get seed nodes based on the network used
 pub const fn get_seed_nodes(network: &Network) -> &[&str] {
