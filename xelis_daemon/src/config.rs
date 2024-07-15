@@ -178,30 +178,20 @@ pub const PEER_PACKET_CHANNEL_SIZE: usize = 1024;
 pub const PEER_SEND_BYTES_TIMEOUT: u64 = 3_000;
 
 // Hard Forks configured
-const HARD_FORKS: [HardFork; 2] = [
+const HARD_FORKS: [HardFork; 1] = [
     HardFork {
         height: 0,
         version: BlockVersion::V0,
         changelog: "Initial version",
-    },
-    HardFork {
-        height: 434_100, // Expected date: 10/07/2024 12am UTC
-        version: BlockVersion::V1,
-        changelog: "xelis-hash v2",
     }
 ];
 
 // Testnet / Devnet hard forks
-const TESTNET_HARD_FORKS: [HardFork; 2] = [
+const TESTNET_HARD_FORKS: [HardFork; 1] = [
     HardFork {
         height: 0,
         version: BlockVersion::V0,
         changelog: "Initial version",
-    },
-    HardFork {
-        height: 5,
-        version: BlockVersion::V1,
-        changelog: "xelis-hash v2",
     }
 ];
 
