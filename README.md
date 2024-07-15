@@ -9,7 +9,7 @@ Mainnet started 5 June 2024.
 
 Do not mine this coin if you think it's a serious project. It's not for you. Always remember that you are here for meme fork.
 
-Read more information about our project in our discord https://discord.gg/jebGH7Uz
+Read more information about our project in our discord https://discord.gg/b5KmFeR2h7
 
 ## Config
 
